@@ -1,0 +1,12 @@
+total 136
+drwxr-xr-x@ 11 jasnoormac  staff    352 Nov 10 13:20 .
+drwx------@ 78 jasnoormac  staff   2496 Nov 10 13:18 ..
+-rw-r--r--   1 jasnoormac  staff    120 Nov 10 13:18 .env
+-rw-r--r--   1 jasnoormac  staff    120 Nov 10 13:01 .env  
+-rw-r--r--   1 jasnoormac  staff      0 Nov 10 13:20 files.txt
+drwxr-xr-x  98 jasnoormac  staff   3136 Nov 10 12:19 node_modules
+-rw-r--r--   1 jasnoormac  staff  42643 Nov 10 12:22 package-lock.json
+-rw-r--r--   1 jasnoormac  staff    497 Nov 10 12:16 package.json
+drwxr-xr-x   3 jasnoormac  staff     96 Nov 10 12:39 public
+-rw-r--r--   1 jasnoormac  staff  12158 Nov 10 13:10 server.js
+drwxr-xr-x  11 jasnoormac  staff    352 Nov 10 12:53 views

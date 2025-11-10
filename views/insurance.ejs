@@ -1,0 +1,22 @@
+
+  <section class="step-card">
+    <h1>Select Insurance</h1>
+    <form method="POST" action="/insurance">
+      <label>
+        <input type="radio" name="insurance_id" value="" checked>
+        No insurance
+      </label>
+      <% insurances.forEach(i => { %>
+        <label class="radio-card">
+          <input type="radio" name="insurance_id"
+                 value="<%= i.id %>"
+                 data-price="<%= i.price_per_day %>">
+          <strong><%= i.name %></strong> - $<%= Number(i.price_per_day).toFixed(2) %>/day
+
+          <div><%= i.description %></div>
+        </label>
+      <% }) %>
+      <input type="hidden" name="insurance_price" id="insurance_price">
+      <button type="submit">Next: Accessories</button>
+    </form>
+  </section>

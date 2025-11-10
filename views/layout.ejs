@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vehicle Rental System</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script defer src="/js/main.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">Vehicle Rental</div>
+    <nav>
+      <% if (currentUser) { %>
+        <span class="welcome">Hello, <%= currentUser.name %></span>
+        <a href="/locations">Book</a>
+        <a href="/reservations">My Reservations</a>
+        <a href="/logout">Logout</a>
+      <% } else { %>
+        <a href="/login">Login</a>
+        <a href="/signup">Sign Up</a>
+      <% } %>
+    </nav>
+  </header>
+
+  <main class="main">
+    <%- body %>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; <%= new Date().getFullYear() %> Vehicle Rental System</p>
+  </footer>
+</body>
+</html>

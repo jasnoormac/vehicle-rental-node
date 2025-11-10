@@ -1,0 +1,53 @@
+
+  <section class="step-card">
+    <h1>My Reservations</h1>
+
+    <p>You can update dates or delete reservations. (CRUD demo)</p>
+
+    <% if (reservations.length === 0) { %>
+      <p>No reservations yet. <a href="/locations">Book now</a>.</p>
+    <% } else { %>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Car</th>
+            <th>Location</th>
+            <th>Dates</th>
+            <th>Total Price</th>
+            <th>Update</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% reservations.forEach(r => { %>
+            <tr>
+              <td><%= r.model %></td>
+              <td><%= r.city %> - <%= r.branch_name %></td>
+              <td>
+                <form method="POST" action="/reservations/<%= r.id %>/update" class="inline-form">
+                  <input type="date" name="start_date" value="<%= r.start_date.toISOString().slice(0,10) %>" required>
+                  <input type="date" name="end_date" value="<%= r.end_date.toISOString().slice(0,10) %>" required>
+                  <button type="submit">Save</button>
+                </form>
+              </td>
+              <td>$<%= r.total_price.toFixed(2) %></td>
+              <td></td>
+              <td>
+                <div class="reservation-actions">
+  <form method="GET" action="/reservations/<%= r.id %>/edit">
+    <button type="submit" class="update-btn">Update</button>
+  </form>
+
+  <form method="POST" action="/reservations/<%= r.id %>/delete" onsubmit="return confirm('Delete this reservation?');">
+    <button type="submit" class="delete-btn">Delete</button>
+  </form>
+</div>
+
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } %>
+  </section>
+

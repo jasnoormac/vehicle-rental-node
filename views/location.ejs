@@ -1,0 +1,30 @@
+
+
+<section class="step-card">
+  <h1>Select Pickup Location & Dates</h1>
+  <form method="POST" action="/locations">
+    <label>Location
+      <select name="location_id" required>
+        <option value="">-- Select --</option>
+        <% locations.forEach(l => { %>
+          <option value="<%= l.id %>">
+            <%= l.city %> - <%= l.branch_name %>
+          </option>
+        <% }) %>
+      </select>
+    </label>
+
+    <div class="date-row">
+      <label>Start Date
+        <input type="date" name="start_date" required>
+      </label>
+      <label>End Date
+        <input type="date" name="end_date" required>
+      </label>
+    </div>
+
+    <button type="submit">Next: Choose Car</button>
+  </form>
+</section>
+
+

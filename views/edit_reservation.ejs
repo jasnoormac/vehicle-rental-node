@@ -1,0 +1,51 @@
+<section class="edit-card">
+  <h1>Update Your Booking</h1>
+
+  <form method="POST" action="/reservations/<%= reservation.id %>/update">
+    <!-- Car selection -->
+    <label>Choose Car</label>
+    <select name="car_id" required>
+      <% cars.forEach(c => { %>
+        <option value="<%= c.id %>" <%= c.id === reservation.car_id ? 'selected' : '' %>>
+          <%= c.model %> — $<%= Number(c.daily_price).toFixed(2) %>/day
+        </option>
+      <% }) %>
+    </select>
+
+    <!-- Insurance -->
+    <label>Choose Insurance</label>
+    <select name="insurance_id">
+      <option value="">No Insurance</option>
+      <% insuranceOptions.forEach(i => { %>
+        <option value="<%= i.id %>" <%= i.id === reservation.insurance_id ? 'selected' : '' %>>
+          <%= i.name %> — $<%= Number(i.price_per_day).toFixed(2) %>/day
+        </option>
+      <% }) %>
+    </select>
+
+    <!-- Accessories -->
+    <label>Accessories</label>
+    <div class="accessory-options">
+      <% accessories.forEach(a => { %>
+        <label>
+          <input
+            type="checkbox"
+            name="accessory_ids"
+            value="<%= a.id %>"
+            <%= selectedAccessoryIds.includes(a.id) ? 'checked' : '' %> >
+          <%= a.name %> — $<%= Number(a.price_flat).toFixed(2) %>
+        </label>
+      <% }) %>
+    </div>
+
+    <!-- Dates -->
+    <label>Start Date</label>
+    <input type="date" name="start_date" value="<%= reservation.start_date.toISOString().split('T')[0] %>" required>
+
+    <label>End Date</label>
+    <input type="date" name="end_date" value="<%= reservation.end_date.toISOString().split('T')[0] %>" required>
+
+    <button type="submit" class="update-btn">Save Changes</button>
+    <a href="/reservations" class="cancel-btn">Cancel</a>
+  </form>
+</section>

@@ -1,0 +1,37 @@
+
+  <section class="step-card">
+    <h1>Select Car</h1>
+    <form method="POST" action="/cars">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Select</th>
+            <th>Model</th>
+            <th>Transmission</th>
+            <th>Color</th>
+            <th>Seats</th>
+            <th>Daily Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% cars.forEach(c => { %>
+            <tr>
+              <td>
+                <input type="radio" name="car_id" value="<%= c.id %>" required
+                  data-price="<%= c.daily_price %>">
+              </td>
+              <td><%= c.model %></td>
+              <td><%= c.transmission %></td>
+              <td><%= c.color %></td>
+              <td><%= c.seats %></td>
+              <td>$<%= Number(c.daily_price).toFixed(2) %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+
+      <input type="hidden" name="daily_price" id="car_daily_price">
+      <button type="submit">Next: Insurance</button>
+    </form>
+  </section>
+

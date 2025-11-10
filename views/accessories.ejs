@@ -1,0 +1,22 @@
+
+  <section class="step-card">
+    <h1>Select Accessories</h1>
+    <form method="POST" action="/accessories">
+      <% accessories.forEach(a => { %>
+        <label class="checkbox-card">
+          <input type="checkbox" name="accessory_ids" value="<%= a.id %>"
+                 data-price="<%= a.price_flat %>">
+          <strong><%= a.name %></strong> - $<%= Number(a.price_flat).toFixed(2) %>
+
+          <div><%= a.description %></div>
+        </label>
+      <% }) %>
+      <!-- mirror prices in hidden fields -->
+      <% accessories.forEach(a => { %>
+        <input type="hidden" name="accessory_prices" value="<%= a.price_flat %>">
+      <% }) %>
+
+      <button type="submit">Next: Payment</button>
+    </form>
+  </section>
+
